@@ -12,11 +12,12 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.4.0",
         "alpinejs": "^3.4.2",
-        "autoprefixer": "^10.4.2",
+        "autoprefixer": "10.4.5",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
+        "postcss-import": "^15.1.0",
         "tailwindcss": "^3.0.18"
     },
     "dependencies": {
@@ -27,5 +28,8 @@
         "@babel/preset-env": "^7.15.8",
         "webpack": "^5.60.0",
         "webpack-cli": "^4.9.1"
+    },
+    "resolutions": {
+        "autoprefixer": "10.4.5"
     }
 }
