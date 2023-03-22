@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TimelineController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +20,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    
-    Route::get('/timeline', TimelineController::class)->name('timeline'); 
+    Route::get('/timeline', TimelineController::class)->name('timeline');
+    Route::post('/status', [StatusController::class, 'store'])->name('status.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
