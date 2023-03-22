@@ -29,10 +29,10 @@ class StatusRequest extends FormRequest
         ];
     }
 
-    public function make($string)
+    public function make()
     {
         /** @var \App\Models\User $user*/
         $user = Auth::user();
-        $user->makeStatus($string);
+        $user->makeStatus($this->body);
     }
 }
