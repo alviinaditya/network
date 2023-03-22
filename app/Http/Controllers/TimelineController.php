@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,9 @@ class TimelineController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $statuses = Auth::user()->timeline();
+        /** @var \App\Models\User $user*/
+        $user = Auth::user();
+        $statuses = $user->timeline();
         return view('timeline', compact('statuses'));
     }
 }

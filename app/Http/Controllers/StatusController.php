@@ -10,8 +10,7 @@ class StatusController extends Controller
 {
     public function store(StatusRequest $request)
     {
-        Auth::user()->makeStatus($request->body);
-
+        $request->make($request->body);
         return redirect()->back();
     }
 }

@@ -28,4 +28,11 @@ class StatusRequest extends FormRequest
             'body' => ['required']
         ];
     }
+
+    public function make($string)
+    {
+        /** @var \App\Models\User $user*/
+        $user = Auth::user();
+        $user->makeStatus($string);
+    }
 }
