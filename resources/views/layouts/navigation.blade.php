@@ -36,7 +36,7 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile', Auth::user()->username)">
-                                {{ __('Profile') }}
+                                {{ __('View Profile') }}
                             </x-dropdown-link>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">

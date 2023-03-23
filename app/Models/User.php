@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function gravatar($size = 100)
     {
-        return "https://api.dicebear.com/5.x/initials/svg?seed=" . $this->name . "&fontFamily=sans-serif&fontWeight=600&fontSize=40";
+        return "https://api.dicebear.com/5.x/initials/svg?seed=" . $this->name . "&fontWeight=600&fontSize=40";
         // return "https://api.dicebear.com/5.x/identicon/svg?seed=" . md5(strtolower(trim($this->email))) . "&backgroundType=gradientLinear&backgroundColor=b6e3f4,d1d4f9,ffd5dc,ffdfbf,c0aede";
         // $default = "wavatar";
         // return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($default) . "&s=" . $size . "&r=g";
@@ -77,6 +77,11 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id')->withTimestamps();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id')->withTimestamps();
     }
 
     public function follow(User $user)
