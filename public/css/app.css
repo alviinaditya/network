@@ -696,6 +696,9 @@ select {
 .col-span-8 {
   grid-column: span 8 / span 8;
 }
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
 .m-5 {
   margin: 1.25rem;
 }
@@ -1583,6 +1586,10 @@ select {
 }
 @media (min-width: 640px) {
 
+  .sm\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+
   .sm\:-my-px {
     margin-top: -1px;
     margin-bottom: -1px;
@@ -1666,6 +1673,14 @@ select {
   }
 }
 @media (min-width: 768px) {
+
+  .md\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .md\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));

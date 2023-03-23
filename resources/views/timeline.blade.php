@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-container>
         <div class="grid grid-cols-12 gap-6">
-            <div class="col-span-8">
+            <div class="md:col-span-8 col-span-12">
                 <x-card>
                     <div class="flex items-start">
                       <img class="mt-0.5 flex-shrink-0 object-cover w-8 h-8 rounded-full ring ring-gray-300 dark:ring-gray-600 mr-3" src="{{ Auth::user()->gravatar() }}"/>
@@ -42,7 +42,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-span-4">
+            <div class="col-span-12 md:col-span-4">
                 <x-card>
                     <h2 class="font-bold text-black dark:text-gray-100 text-lg pb-3">Recently Follows</h5>
                     <div class="space-y-3">

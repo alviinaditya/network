@@ -19,6 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
@@ -45,8 +46,10 @@ class User extends Authenticatable
 
     public function gravatar($size = 100)
     {
-        $default = "wavatar";
-        return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($default) . "&s=" . $size . "&r=g";
+        return "https://api.dicebear.com/5.x/initials/svg?seed=" . $this->name . "&fontFamily=sans-serif&fontWeight=600&fontSize=40";
+        // return "https://api.dicebear.com/5.x/identicon/svg?seed=" . md5(strtolower(trim($this->email))) . "&backgroundType=gradientLinear&backgroundColor=b6e3f4,d1d4f9,ffd5dc,ffdfbf,c0aede";
+        // $default = "wavatar";
+        // return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($default) . "&s=" . $size . "&r=g";
     }
 
     public function statuses()
