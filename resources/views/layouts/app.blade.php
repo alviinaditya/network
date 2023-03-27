@@ -33,6 +33,12 @@
             <main class="pt-8">
                 {{ $slot }}
             </main>
+
+            <footer class="bg-white border-t dark:bg-gray-800 dark:border-gray-700 mt-5">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-gray-500 dark:text-gray-400 font-light">
+                    &copy; {{ config('app.name') }} {{ date('Y') }}
+                </div>
+            </footer>
         </div>
     </body>
 </html>
