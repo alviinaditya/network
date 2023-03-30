@@ -25,12 +25,8 @@
     </div>
 
     <x-container>
-        <div class="grid grid-cols-12 gap-6 mt-3">
-            <div class="md:col-span-8 col-span-12 space-y-3">
-                <x-statuses :statuses="$statuses"/>
-            </div>
-            <div class="md:col-span-4 col-span-12">
-            </div>
+        <div class="grid grid-cols-3 gap-4 mt-5">
+            <x-users-list :users="$follows" class="px-5 py-4 bg-white dark:bg-gray-800 shadow rounded-lg"></x-users-list>
         </div>
     </x-container>
 </x-app-layout>

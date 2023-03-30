@@ -35,7 +35,7 @@
                 <x-card>
                     <h2 class="font-bold text-black dark:text-gray-100 text-lg pb-3">Recently Follows</h5>
                     <div class="space-y-3">
-                        <x-users-list :users="Auth::user()->follows()->limit(5)->get()"></x-users-list>
+                        <x-users-list :users="Auth::user()->follows()->limit(5)->get()" class="mb-4"></x-users-list>
                     </div>                    
                 </x-card>
             </div>

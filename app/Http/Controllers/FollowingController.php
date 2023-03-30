@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class FollowingController extends Controller
 {
-    public function following(User $user) {
-        return view('users.following', [
-            'following' => $user->follows,
-            'user' => $user,
-        ]);
-    }
+    public function __invoke(User $user, $follows){
+        if($follows !== "following" && $follows !== "followers") {
+            return redirect(route('profile', $user->username));
+        }
 
-    public function follower() {
+        return view('users.follows', [
+            'user' => $user,
+            'follows' => $follows == "following" ? $user->follows : $user->followers,
+        ]);
 
     }
 }
