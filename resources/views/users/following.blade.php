@@ -40,6 +40,8 @@
     </div>
 
     <x-container>
-        <x-users-list :users="$following"></x-users-list>
+        <div class="mt-5">
+            <x-users-list :users="$following" class="px-5 py-4 bg-white dark:bg-gray-800 shadow rounded-lg"></x-users-list>
+        </div>
     </x-container>
 </x-app-layout>
