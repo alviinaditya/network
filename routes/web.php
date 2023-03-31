@@ -25,7 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/timeline', TimelineController::class)->name('timeline');
     Route::post('/status', [StatusController::class, 'store'])->name('status.store');
 
-    Route::get('profile/{user}/{follows}', FollowingController::class)->name('profile.follows');
+    Route::get('profile/{user}/{follows}', [FollowingController::class, 'index'])->name('follows.index');
+    Route::post('profile/{user}', [FollowingController::class, 'store'])->name('follows.store');
 
     Route::get('profile/{user}', ProfileInformationController::class)->withoutMiddleware('auth')->name('profile');
 });
