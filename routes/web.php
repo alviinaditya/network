@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExploreUserController;
 use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\StatusController;
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/timeline', TimelineController::class)->name('timeline');
     Route::post('/status', [StatusController::class, 'store'])->name('status.store');
+
+    Route::get('explore', ExploreUserController::class)->name('users.index');
 
     Route::get('profile/{user}/{follows}', [FollowingController::class, 'index'])->name('follows.index');
     Route::post('profile/{user}', [FollowingController::class, 'store'])->name('follows.store');

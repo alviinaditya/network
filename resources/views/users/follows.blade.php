@@ -10,8 +10,8 @@
     <x-statistics :user="$user"/>
             
     <x-container>
-        <div class="grid grid-cols-3 gap-4 mt-5">
-            <x-users-list :users="$follows" class="px-5 py-4 bg-white dark:bg-gray-800 shadow rounded-lg"></x-users-list>
+        <div class="grid grid-cols-4 gap-4 mt-5">
+            <x-users-list :users="$follows" :hasCard="true"></x-users-list>
         </div>
     </x-container>
 </x-app-layout>
