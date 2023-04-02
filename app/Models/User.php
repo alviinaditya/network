@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\FollowsTraits;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, FollowsTraits;
 
     /**
      * The attributes that are mass assignable.
@@ -46,10 +47,10 @@ class User extends Authenticatable
 
     public function gravatar($size = 100)
     {
-        return "https://api.dicebear.com/5.x/initials/svg?seed=" . $this->name . "&fontWeight=600&fontSize=40";
+        // return "https://api.dicebear.com/5.x/initials/svg?seed=" . $this->name . "&fontWeight=600&fontSize=40";
         // return "https://api.dicebear.com/5.x/identicon/svg?seed=" . md5(strtolower(trim($this->email))) . "&backgroundType=gradientLinear&backgroundColor=b6e3f4,d1d4f9,ffd5dc,ffdfbf,c0aede";
-        // $default = "wavatar";
-        // return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($default) . "&s=" . $size . "&r=g";
+        $default = "wavatar";
+        return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=" . urlencode($default) . "&s=" . $size . "&r=g";
     }
 
     public function statuses()
@@ -72,29 +73,5 @@ class User extends Authenticatable
             ->orWhere('user_id', $this->id)
             ->latest()
             ->get();
-    }
-
-    public function follows()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id')->withTimestamps();
-    }
-
-    public function followers()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id')->withTimestamps();
-    }
-
-    public function follow(User $user)
-    {
-        return $this->follows()->save($user);
-    }
-
-    public function unfollow(User $user)
-    {
-        return $this->follows()->detach($user);
-    }
-
-    public function hasFollow(User $user) {
-        return $this->follows()->where('following_user_id', $user->id)->exists();
     }
 }
