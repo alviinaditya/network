@@ -18,7 +18,7 @@ trait FollowsTraits
 
     public function follow(User $user)
     {
-        return $this->follows()->save($user);
+        return $this->follows()->attach($user);
     }
 
     public function unfollow(User $user)
