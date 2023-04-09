@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 trait FollowsTraits
 {
@@ -28,6 +29,11 @@ trait FollowsTraits
 
     public function hasFollow(User $user)
     {
-        return $this->follows()->where('following_user_id', $user->id)->exists();
+        // return $this->follows()->where('following_user_id', $user->id)->exists();
+
+        return DB::table('follows')
+            ->whereUserId($this->id)
+            ->whereFollowingUserId($user->id)
+            ->count() > 0;
     }
 }

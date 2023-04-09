@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowingController extends Controller
 {
-    public function index(User $user, $follows){
-        if($follows !== "following" && $follows !== "followers") {
+    public function index(User $user, $follows)
+    {
+        if ($follows !== "following" && $follows !== "followers") {
             return redirect(route('profile', $user->username));
         }
 
@@ -17,21 +18,20 @@ class FollowingController extends Controller
             'user' => $user,
             'follows' => $follows == "following" ? $user->follows : $user->followers,
         ]);
-
     }
 
-    public function store(Request $request, User $user) {
+    public function store(Request $request, User $user)
+    {
         /** @var \App\Models\User $authUser*/
         $authUser = Auth::user();
 
-        if($authUser->hasFollow($user)) {
+        if ($authUser->hasFollow($user)) {
             $authUser->unfollow($user);
             $message = "You are successfully unfollow this user";
-        }
-        else {
+        } else {
             $authUser->follow($user);
             $message = "You are successfully follow this user";
         }
-        return back()->with('success', $message);
+        return back()->with('message', $message);
     }
 }

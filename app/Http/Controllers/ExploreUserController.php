@@ -11,7 +11,9 @@ class ExploreUserController extends Controller
     public function __invoke()
     {
         return view('users.index', [
-            'users' => User::where('id', '!=', Auth::user()->id)->simplePaginate(30),
+            'users' => User::with('follows')
+                ->where('id', '!=', Auth::user()->id)
+                ->simplePaginate(30),
         ]);
     }
 }

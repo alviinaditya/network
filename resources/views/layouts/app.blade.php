@@ -41,9 +41,17 @@
         </main>
 
         <footer class="bg-white border-t dark:bg-gray-800 dark:border-gray-700 mt-5">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-gray-500 dark:text-gray-400 font-light">
-                &copy; {{ config('app.name') }} {{ date('Y') }}
-            </div>
+            <x-container>
+                <div class="flex justify-between">
+                    <div class="py-6 text-gray-500 dark:text-gray-400 font-light">
+                        &copy; {{ config('app.name') }} {{ date('Y') }}
+                    </div>
+                    <div class="py-6 text-gray-500 dark:text-gray-400 font-light">
+                        This page took {{ (round(microtime(true) - LARAVEL_START, 3)) }} seconds to render
+                    </div>
+
+                </div>
+            </x-container>
         </footer>
     </div>
 </body>

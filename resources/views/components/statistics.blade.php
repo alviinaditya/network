@@ -9,14 +9,14 @@
                     <span
                         class="block uppercase font-semibold text-xs text-gray-500 dark:text-gray-400 leading-snug">Status</span>
                 </a>
-                <a href="{{ route('follows.index', [$user->username, " followers"]) }}"
+                <a href="{{ route('follows.index', [$user->username, 'followers']) }}"
                     class="text-center px-5 py-3 border-r dark:border-gray-700">
                     <span class="block font-bold text-xl leading-snug text-black dark:text-gray-100">{{
                         $user->followers->count() }}</span>
                     <span
                         class="block uppercase font-semibold text-xs text-gray-500 dark:text-gray-400 leading-snug">Followers</span>
                 </a>
-                <a href="{{ route('follows.index', [$user->username, " following"]) }}" class="text-center px-5 py-3">
+                <a href="{{ route('follows.index', [$user->username, 'following']) }}" class="text-center px-5 py-3">
                     <span class="block font-bold text-xl leading-snug text-black dark:text-gray-100">{{
                         $user->follows->count() }}</span>
                     <span

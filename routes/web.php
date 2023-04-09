@@ -6,6 +6,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\ExploreUserController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ProfileInformationController;
 use App\Http\Controllers\UpdateProfileInformationController;
 
@@ -31,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('profile')->group(function () {
         Route::get('edit', [UpdateProfileInformationController::class, 'edit'])->name('profile.edit');
         Route::put('update', [UpdateProfileInformationController::class, 'update'])->name('profile.update');
+
+        Route::get('change-password', [ChangePasswordController::class, 'index'])->name('change.password');
+        Route::post('change-password', [ChangePasswordController::class, 'store']);
 
         Route::get('{user}/{follows}', [FollowingController::class, 'index'])->name('follows.index');
         Route::post('{user}', [FollowingController::class, 'store'])->name('follows.store');

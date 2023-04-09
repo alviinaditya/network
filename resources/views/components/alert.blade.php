@@ -1,7 +1,7 @@
 <div
     class="fixed inset-x-0 bottom-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end z-50">
     <div x-data="{ show: false }" x-init="() => {
-            setTimeout(() => show = true, 500);
+            setTimeout(() => show = true, 0);
             setTimeout(() => show = false, 5000);
           }" x-show="show" x-description="Notification panel, show/hide based on alert state."
         @click.away="show = false" x-transition:enter="transition ease-out duration-300"

@@ -72,6 +72,6 @@ class User extends Authenticatable
         return Status::whereIn('user_id', $following)
             ->orWhere('user_id', $this->id)
             ->latest()
-            ->get();
+            ->simplePaginate(10);
     }
 }
